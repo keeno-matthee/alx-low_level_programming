@@ -1,13 +1,13 @@
+#include "main.h"
+
 /**
- * _abs - returns absolute value of argument
- *
- * @n: signed integer value
- *
- * Return: asbolute value of n
- */
+* _abs -> return absolute value of a number
+* @n: parameter
+* Return: absolute value of a number
+*/
 int _abs(int n)
 {
 	if (n < 0)
-		return (-n);
+		n = -n;
 	return (n);
 }

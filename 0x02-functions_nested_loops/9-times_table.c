@@ -1,46 +1,33 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * _printstr - prints a given string
- * @c: a null temrinated character array
- *
- * Return: 0 if successful
- */
-int _printstr(char c[])
-{
-	int i = 0;
-
-	while (c[i] != '\0')
-		_putchar(c[i++]);
-
-	return (0);
-}
-
-/**
- * times_table - prints out a multiplication table for between
- * 0 and 9
- *
- * Return void
- */
+*times_table -> time table
+*/
 void times_table(void)
 {
-	char line[] = "0,  0,  0,  0,  0,  0,  0,  0,  0,  0\n";
-	int i;
+	int x, y, k;
 
-	while (line[3] == ' ')
+	for (x = 0; x < 10; x++)
 	{
-		_printstr(line);
-		for (i = 0; i < 10; i++)
+		for (y = 0; y < 10; y++)
 		{
-			line[i * 4] = line[i * 4] + i;
-			if (line[i * 4] > '9')
+			k = x * y;
+			if (y == 0)
+				_putchar(k + '0');
+			if (y != 0 && k < 10)
 			{
-				line[i * 4] -= 10;
-				if (line[i * 4 - 1] == ' ')
-					line[i * 4 - 1] = '1';
-				else
-					line[i * 4 - 1]++;
+				_putchar(',');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar(k + '0');
+			} else if (k >= 10)
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar((k / 10) + '0');
+				_putchar((k % 10) + '0');
 			}
 		}
+		_putchar('\n');
 	}
 }

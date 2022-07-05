@@ -1,39 +1,32 @@
-#include "holberton.h"
 #include <stdio.h>
+#include "main.h"
+
 
 /**
- * _printstr - prints a given string
- * @c: a null temrinated character array
- *
- * Return: 0 if successful
- */
-int _printstr(char c[])
-{
-	int i = 0;
-
-	while (c[i] != '\0')
-		_putchar(c[i++]);
-
-	return (0);
-}
-
-/**
- * print_to_98 - print all natural numbers between the argument and 98,
- * inclusive
- *
- * @n: integer to start printing from
- *
- * Return: void
- */
+* print_to_98 - prints to 98
+* @n: the starting point
+*/
 void print_to_98(int n)
 {
-	while (n != 98)
+	if (n <= 98)
 	{
-		printf("%d, ", n);
-		if (n > 98)
-			n--;
-		else
-			n++;
+		while (n <= 98)
+		{
+			if (n == 98)
+				printf("%d\n", n);
+			else
+				printf("%d, ", n);
+			n = n + 1;
+		}
+	} else if (n > 98)
+	{
+		while (n >= 98)
+		{
+			if (n == 98)
+				printf("%d\n", n);
+			else
+				printf("%d, ", n);
+			n = n - 1;
+		}
 	}
-	printf("%d\n", n);
 }

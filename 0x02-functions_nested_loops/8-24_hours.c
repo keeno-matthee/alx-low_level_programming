@@ -1,48 +1,38 @@
-#include "holberton.h"
-
+#include "main.h"
 /**
- * _printstr - prints a given string
- * @c: a null temrinated character array
- *
- * Return: 0 if successful
- */
-int _printstr(char c[])
-{
-	int i = 0;
-
-	while (c[i] != '\0')
-		_putchar(c[i++]);
-
-	return (0);
-}
-
-/**
- * jack_bauer - prints times from 00:00 to 24:00
- *
- * Return: 0 on completion
- */
+* jack_bauer -> prints 24 hours
+*/
 void jack_bauer(void)
 {
-	char x[6] = "00:00\n";
+	int i, j;
 
-	while (x[0] != '2' ||  x[1] != '4')
+	for (i = 0; i < 24; i++)
 	{
-		_printstr(x);
-		x[4]++;
-		if (x[4] == '9' + 1)
+		for (j = 0; j < 60; j++)
 		{
-			x[4] = '0';
-			x[3]++;
-		}
-		if (x[3] == '6')
-		{
-			x[3] = '0';
-			x[1]++;
-		}
-		if (x[1] == '9' + 1)
-		{
-			x[1] = '0';
-			x[0]++;
+			if (i < 10)
+			{
+				_putchar('0');
+				_putchar(i + '0');
+			}
+			else if (i >= 10)
+			{
+				_putchar((i / 10) + '0');
+				_putchar((i % 10) + '0');
+			}
+			if (j < 10)
+			{
+				_putchar(':');
+				_putchar('0');
+				_putchar(j + '0');
+			}
+			else if (j >= 10)
+			{
+				_putchar(':');
+				_putchar((j / 10) + '0');
+				_putchar((j % 10) + '0');
+			}
+			_putchar('\n');
 		}
 	}
 }

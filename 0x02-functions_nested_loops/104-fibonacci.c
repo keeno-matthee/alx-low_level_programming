@@ -1,51 +1,42 @@
 #include <stdio.h>
 
-#define MAXULI9 10000000000
-
 /**
- * main - prints the first 100 Fibonacci numbers, starting with 1 and 2,
- * followed by a new line, without using long long, arrays or dynamic
- * allocation
- *
- * Return: 0 on success
+ * main - finds and prints the first 98 Fibonacci numbers,
+ * starting with 1 and 2
+ * followed by a new line
+ * Return: ALways 0 (Success)
  */
 int main(void)
 {
-	int i;
-	unsigned long onebeforefirst = 0, onebeforesecond = 0;
-	unsigned long twobeforefirst = 0, twobeforesecond = 0;
-	unsigned long currentfirst = 0, currentsecond = 0;
+	unsigned long int i, j, k, j1, j2, k1, k2;
 
-	onebeforesecond = 2;
-	twobeforesecond = 1;
-	currentsecond = onebeforesecond + twobeforesecond;
+	j = 1;
+	k = 2;
 
-	printf("%lu", twobeforesecond);
-	printf(", %lu", onebeforesecond);
-	printf(", %lu", currentsecond);
+	printf("%lu", j);
 
-	for (i = 3; i < 98; i++)
+	for (i = 1; i < 91; i++)
 	{
-		twobeforefirst = onebeforefirst;
-		twobeforesecond = onebeforesecond;
+		printf(", %lu", k);
+		k = k + j;
+		j = k - j;
+	}
 
-		onebeforefirst = currentfirst;
-		onebeforesecond = currentsecond;
+	j1 = j / 1000000000;
+	j2 = j % 1000000000;
+	k1 = k / 1000000000;
+	k2 = k % 1000000000;
 
-		currentfirst = twobeforefirst + onebeforefirst;
-		currentsecond = twobeforesecond + onebeforesecond;
-
-		if (currentsecond >= MAXULI9)
-		{
-			currentfirst++;
-			currentsecond -= MAXULI9;
-		}
-
-		if (currentfirst != 0)
-			printf(", %lu%010lu", currentfirst, currentsecond);
-		else
-			printf(", %lu", currentsecond);
+	for (i = 92; i < 99; ++i)
+	{
+		printf(", %lu", k1 + (k2 / 1000000000));
+		printf("%lu", k2 % 1000000000);
+		k1 = k1 + j1;
+		j1 = k1 - j1;
+		k2 = k2 + j2;
+		j2 = k2 - j2;
 	}
 	printf("\n");
+
 	return (0);
 }
